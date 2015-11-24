@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="static/css/fullcalendar.css" type="text/css"/>
+<link href='http://fullcalendar.io/js/fullcalendar-2.4.0/fullcalendar.css' rel='stylesheet'/>
+<link href='http://fullcalendar.io/js/fullcalendar-2.4.0/fullcalendar.print.css' rel='stylesheet' media='print'/>
+<script src='http://fullcalendar.io/js/fullcalendar-2.4.0/fullcalendar.js'></script>
+<script>
+$(function() { // document ready
+
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek'
+    },
+    defaultDate: '2015-11-12',
+    editable: true,
+    eventLimit: true, // allow "more" link when too many events
+    events: {{ json_text | safe }}
+  });
+
+});
+</script>
+</head>
+  <div class="col-md-12 top-margin">
+    <div class="col-md-10">
+  	   <div id="calendar"></div>
+    </div>
+    <div class="col-md-2">
+      <a class="btn btn-info" href="/new_deployment">Raise record</a>
+    </div>
+  </div>
+{% endblock %}

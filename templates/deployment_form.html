@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-4">
+  <form action="/new_deployment" method="post">
+    {{ form.csrf_token }}{{form.hidden_tag() }}
+    {{ render_field(form.lcr_number) }}
+    {{ render_field(form.change_type) }}
+    {{ render_field(form.tech_service_name) }}
+    {{ render_field(form.description) }}
+    {{ render_field(form.commit_info) }}
+    {{ render_field(form.contact_name) }}
+    {{ render_field(form.email_contacts) }}
+    {{ render_field(form.deployment_date) }}
+    {{ render_field(form.start_time) }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}
